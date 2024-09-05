@@ -1,0 +1,45 @@
+﻿
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse  navbar-collapse" id="navbarToggler">
+            <a href="/" class="navbar-brand"> MovieApp</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="/"" class="nav-link">main</a>
+
+                    <a href="/movies/list" class="nav-link">Movies</a>
+
+                    @if (Context.Request.Path.Value.ToLower().Equals("/"))
+                    {
+                        <a href="/movies/details" class=" nav-link">details</a>
+                        <a href="/home" class=" nav-link">home</a>
+                        <a href="/home/index" class=" nav-link">home index</a>
+                        <a href="/home/about" class=" nav-link">home about</a>
+                        <a href="/movies/index" class=" nav-link">movies index</a>
+
+                    }
+
+                    @if (Context.Request.Path.Value.ToLower().Equals("/movies/list"))
+                    {
+                    <a href="/movies/details" class=" nav-link">details</a>
+                    }
+
+                </li>
+            </ul>
+
+            <from action="" class="from-inline">
+                <input type="text" placeholder="Movie Browser" class="form-control mr-2"/>
+                <button type="submit" class="btn btn-outline-light mr-0">Search</button>
+
+            </from>
+
+        </div>
+    </div>
+
+</nav>

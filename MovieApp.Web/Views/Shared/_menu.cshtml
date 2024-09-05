@@ -1,0 +1,19 @@
+﻿@model List<Genre>
+
+<div class="list-group">
+
+    @if (Model != null)
+    {
+        foreach (var genre in Model)
+        {
+            if (genre != null)
+            {
+                <a href="#" class="list-group-item list-group-item-action">@genre.Name</a>
+            }
+        }
+    }
+    else
+    {
+        <p class="list-group-item">No genres available.</p> 
+    }
+</div>

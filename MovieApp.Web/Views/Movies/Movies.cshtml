@@ -1,0 +1,47 @@
+﻿@model MoviesViewModel
+
+   <h1>Movie List</h1>
+   <div id ="filmler">
+
+    @if (Model.Movies.Count() == 0)
+    {
+        <div class="alert alert-primary" role="alert">
+            No movies
+        </div>
+    }
+
+        @if (Model is not null)
+        {
+        
+        @foreach(var movie in Model.Movies)
+        {
+            @await Html.PartialAsync("_movie", movie);
+
+            @* sayfada gönderilen bir liste ve liste foreach'te dönüyor bu yüzden movie gönderiliyor'
+            <div class=" film">
+                <img class = "img-movie" src ="/img/@movie.ImageUrl" alt="@movie.Title" height="200" width="300"/>
+                <p>@movie.Title</p>
+
+                <p>@movie.Description</p>
+                <ul>
+                    @if (movie.Players != null)
+                        {
+                        @foreach(var player in movie.Players)
+                        {
+                            <li>@player</li>
+                        
+                        }
+                    }
+
+                </ul>
+            </div>
+            *@
+        }
+        }
+   </div>
+
+@section menu
+{
+@*     @await Html.PartialAsync("_menu", Model.Genres)*@
+    @await Component.InvokeAsync("Genres")
+}

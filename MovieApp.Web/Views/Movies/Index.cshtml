@@ -1,0 +1,21 @@
+﻿
+    <div class="movie">
+        <img class="img-movie" src="/img/@Model.ImageUrl" alt="@Model.Title" height="200" width="300" />
+        <p>@ViewBag.MovieTitle</p>
+        <p>@ViewBag.MovieEx</p>
+        <p>@ViewBag.MovieDirector</p>
+        <p>
+        <ul>
+            @if (ViewBag.Cast != null)
+            {
+                foreach (var item in ViewBag.Cast)
+                {
+                    <li>@item</li>
+                }
+            }
+            
+             </ul>
+        </p>
+
+    </div>
+

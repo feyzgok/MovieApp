@@ -1,0 +1,52 @@
+﻿@model MovieApp.Web.Models.MovieCinemaViewModel
+
+<head>
+    <title>Google Map</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCytEt3x-0EDI-hTyPeNX7inqc2UeK3UG8" async defer></script>
+    <script src="~/js/map.js"></script>
+</head>
+
+<body>
+    <ul>
+        @foreach (var movie in Model.Movies)
+        {
+            <li>
+                <img class="img-movie" src="/img/@movie.ImageUrl" class="img-fluid rounded-start" alt="@movie.Title">
+                <h5><strong>Title:</strong> @movie.Title</h5>
+                <p><strong>Description:</strong> @movie.Description</p>
+                <p><strong>Director:</strong> @movie.Director</p>
+
+                <p><strong>Players:</strong></p>
+                <ul>
+                    @if (movie.Players != null)
+                    {
+                        @foreach (var player in movie.Players)
+                        {
+                            if (player != null)
+                            {
+                                <li>@player</li>
+                            }
+                        }
+                    }
+                </ul>
+
+                <p><strong>Cinema Locations:</strong></p>
+                <ul>
+                    @if (movie.Cinemas != null)
+                    {
+                        @foreach (var cinema in movie.Cinemas)
+                        {
+                            <li>
+                                <strong>@cinema.Name</strong>
+                                <p>@cinema.Address</p>
+                                <button class="button" onclick="showMap(@cinema.Latitude, @cinema.Longitude)">Show on Map</button>
+                            </li>
+                        }
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+
+    <div id="map" style="width: 100%; height: 500px; display:none;"></div>
+</body>

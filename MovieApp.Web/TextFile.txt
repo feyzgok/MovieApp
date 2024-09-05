@@ -1,0 +1,35 @@
+﻿
+
+
+ViewComponent amaç: Kendi içinde bilgiye sahip olması - dışarıya ihtiyaç duymaması
+
+-Components klasörü oluturuldu
+-Genres klasörü oluşturuldu
+-Default.cshtml Genres'a ait
+
+@await Component.InvokeAsync("Genres") //Genres componentini çağırdık
+Bu işlemi Home-About.cshtml'deki section menu'de ve  sayfalarında da yaptık
+Artık tür listesine ihtiyacımız yok çünkü Genres componenti içindeki bilgiye erişebiliyoruz
+
+
+18.Repository Sınıfları
+Repository sınıfları veritabanı işlemlerini gerçekleştiren sınıflardır.
+Static bir repository oluşturmamızın nedeni tüm kullanıcalrın ortaklaşa tek bir tane veri tabanından verileri çekmesidir
+Kullanıcı için uygulamanın bir kopyası gönderilecek
+
+Modeller üzerinden işlem yapacak bir class ekledim
+Data klasörü oluşturuldu
+MovieRepository.cs oluşturuldu
+MovieRepository.cs içindeki metotlarla ver itabanı işlemleri gerçekleştirilecek
+
+
+
+22-Seçilen Türdeki Filmleri Listeleme
+RouteData.Values["id"] üzerinden seçilen türün bilgisi geldi
+GenreViewComponent bilgilerini View(GenreRepository.Genres) metodu ile döndürdük
+@(ViewBag.SelectedGenre == genre.Name ? "active" : "") // Aktif class'ı belirlemek için ViewBag.SelectedGenre kullanıldı
+
+
+23-Form Nedir?
+Client HTTP requesti gönderir
+İstek sonucunda Server HTTP response gönderir

@@ -1,0 +1,29 @@
+﻿@model List<Genre>
+
+<div class="list-group">
+
+    @if (Model != null)
+    {
+        <li><a href="/movies/list" class="list-group-item list-group-item-action @(ViewBag.SelectedGenre==null?"active":"")">All Genres</a></li>
+        foreach (var genre in Model)
+        {
+            if (genre != null)
+            {
+                //<a href="@Url.Action("List", "Movies", new { genreId = genre.GenreId })" class="list-group-item list-group-item-action">@genre.Name</a>
+                //<a asp-controller ="MoviesController" asp-action = "List" asp-root-id = "@genre.GenreId" > @genre.Name</a> --bu link görevi üstlenemedi
+                //@Html.ActionLink( genre.Name, "List", "Movies", new {genreId = genre.GenreId } )
+                <li>
+                    <a href="/movies/list/@genre.GenreId" class="list-group-item list-group-item-action @(ViewBag.SelectedGenre==genre.GenreId.ToString()?"active":"")">@genre.Name</a>
+
+                </li>
+
+            }
+            
+        }
+    }
+    else
+    {
+        <p class="list-group-item">No genres available.</p>
+    }
+
+</div>
